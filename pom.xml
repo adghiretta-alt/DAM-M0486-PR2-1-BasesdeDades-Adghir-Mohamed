@@ -24,7 +24,7 @@
         <json.version>20240303</json.version>
         <json-api.version>1.1.4</json-api.version>
         <jackson.version>2.15.3</jackson.version>
-        <javafx.version>17.0.6</javafx.version> <!-- Recomanat actualitzar a una versió més recent per a Java 17+ -->
+        <javafx.version>17.0.6</javafx.version>
         <junit.version>5.10.0</junit.version>
 
         <!-- Versions dels plugins -->
@@ -102,6 +102,27 @@
                 <version>${maven-compiler-plugin.version}</version>
                 <!-- La configuració de la versió de Java ja la pren de les propietats -->
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>cat.iesesteveterradas.Main</mainClass> 
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>            
         </plugins>
     </build>
 

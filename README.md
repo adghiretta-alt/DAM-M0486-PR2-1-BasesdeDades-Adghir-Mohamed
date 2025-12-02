@@ -1,45 +1,44 @@
-# Plantilla projecte Java amb Maven DAM2-MP06 #
+# Plantilla projecte Java amb Maven DAM-MP0486
 
-## Arrencada ràpida ##
+## Compilació i exeució
 Execució ràpida dels diferents exemples i resolusions de problemes
 
-## Windows ##
+### Amb els scripts propis inclosos
+
+#### Windows sense paràmetres
 ```bash
 .\run.ps1 cat.iesesteveterradas.Main
 ```
 
-## Linux ##
+#### Windows amb paràmetres
+```bash
+.\run.ps1 <cat.iesesteveterradas.Main> <param1> <param2> <param3>
+run.sh <cat.iesesteveterradas.Main> <param1> <param2> <param3>
+```
+
+#### Linux sense paràmetres
 ```bash
 run.sh  cat.iesesteveterradas.Main
 ```
 
-## Execució i funcionament ##
-
-### Amb els scripts propis inclosos ###
-
-#### Windows ####
+#### Linux amb paràmetres
 ```bash
 .\run.ps1 <cat.iesesteveterradas.Main> <param1> <param2> <param3>
 run.sh <cat.iesesteveterradas.Main> <param1> <param2> <param3>
 ```
-
-#### Linux ####
-```bash
-.\run.ps1 <cat.iesesteveterradas.Main> <param1> <param2> <param3>
-run.sh <cat.iesesteveterradas.Main> <param1> <param2> <param3>
-```
-
 On:
 * <cat.iesesteveterradas.Main>: és la classe principal que vols executar.
 * \<param1>, \<param2>, \<param3>: són els paràmetres que necessites passar a la teva aplicació.
 
 
-### Usant mvn ###
+### Usant mvn
 
 Cal el 'Maven' per compilar el projecte
 ```bash
 mvn clean
 mvn compile
+mvn test
+mvn package
 ```
 
 Per executar sense usar script propi, directament amb maven:
@@ -47,13 +46,23 @@ Per executar sense usar script propi, directament amb maven:
 mvn exec:java "-Dexec.mainClass=cat.iesesteveterradas.Main" <param1> <param2> <param3>
 ```
 
-Per executar, un cop generat l'artefacte .jar
+### Execució directa amb java
+Preparar les dependències en una carpeta (Recomanada per a proves)
 ```bash
-java -cp ./target/<nom de l'artefacte>.jar cat.iesesteveterradas.Main <param1> <param2> <param3>
+mvn clean package dependency:copy-dependencies
 ```
 
-### Execució de tests ###
-Per executar, un cop generat l'artefacte .jar
+```bash
+java --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED -cp "target/classes;target/dependency/*" cat.iesesteveterradas.Main
+```
+
+### Execució directa amb java (jar package)
+```bash
+java --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED -jar target/ams2-mp0486-esquelet-proj-java-1.0.jar
+```
+
+
+### Execució de tests
 ```bash
 # Executar TOTS els tests
 mvn test
