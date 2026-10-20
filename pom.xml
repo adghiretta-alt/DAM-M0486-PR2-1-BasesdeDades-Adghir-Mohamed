@@ -12,7 +12,7 @@
     <packaging>jar</packaging>
 
     <name>AMS2 MP0486 - Esquelet de Projecte Java</name>
-    <description>Esquelet base per a projectes Java del mòdul MP0486 (SQLite, JSON, JavaFX i JUnit 5).</description>
+    <description>Esquelet base per a les pràctiques del Tema 2 del mòdul MP0486 (SQLite i JUnit 5).</description>
     <url>https://www.iesesteveterradas.cat/</url> <!-- Canvia-ho per la URL del teu projecte -->
 
     <!-- ============================================================ -->
@@ -28,15 +28,11 @@
 
         <!-- Versions de les dependències -->
         <sqlite.version>3.53.4.0</sqlite.version>
-        <json.version>20240303</json.version>
-        <json-p.version>1.1.4</json-p.version>
-        <jackson.version>2.15.3</jackson.version>
-        <javafx.version>17.0.6</javafx.version>
         <junit.version>5.10.3</junit.version>
         <!-- Ampliació (dependències comentades més avall) -->
-        <slf4j.version>2.0.17</slf4j.version>
-        <logback.version>1.5.38</logback.version>
-        <mysql.version>9.7.0</mysql.version>
+        <slf4j.version>2.0.20</slf4j.version>
+        <logback.version>1.6.5</logback.version>
+        <mysql.version>26.7.0</mysql.version>
 
         <!-- Versions dels plugins (fixades perquè el build sigui igual a tots els ordinadors) -->
         <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
@@ -74,44 +70,6 @@
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>${sqlite.version}</version>
-        </dependency>
-
-        <!--
-            Llibreries JSON vistes al Tema 1. S'hi inclouen totes tres perquè l'esquelet
-            serveixi per a qualsevol pràctica del mòdul. En un projecte real se n'escolliria
-            només una (normalment Jackson) per evitar dependències innecessàries i conflictes.
-        -->
-        <dependency> <!-- JSON #1: org.json -->
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${json.version}</version>
-        </dependency>
-        <dependency> <!-- JSON #2: JSON-P (API) -->
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
-            <version>${json-p.version}</version>
-        </dependency>
-        <dependency> <!-- JSON #2: JSON-P (implementació) -->
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>${json-p.version}</version>
-        </dependency>
-        <dependency> <!-- JSON #3: Jackson (inclou jackson-core i jackson-annotations) -->
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
-        <!-- Interfície gràfica (Maven tria automàticament la versió per al teu sistema operatiu) -->
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>${javafx.version}</version>
         </dependency>
 
         <!--
