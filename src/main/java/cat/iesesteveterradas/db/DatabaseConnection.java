@@ -1,4 +1,4 @@
-package db;
+package cat.iesesteveterradas.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

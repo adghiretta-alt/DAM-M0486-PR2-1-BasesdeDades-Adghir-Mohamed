@@ -1,4 +1,4 @@
-package db;
+package cat.iesesteveterradas.db;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,26 +8,26 @@ public class DatabaseInitializer {
 
     public static void init() {
         String createFaccio = """
-            CREATE TABLE IF NOT EXISTS Faccio (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom VARCHAR(15),
-                resum VARCHAR(500)
-            );
-            """;
+                CREATE TABLE IF NOT EXISTS Faccio (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    nom VARCHAR(15),
+                    resum VARCHAR(500)
+                );
+                """;
 
         String createPersonatge = """
-            CREATE TABLE IF NOT EXISTS Personatge (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom VARCHAR(15),
-                atac REAL,
-                defensa REAL,
-                idFaccio INTEGER,
-                FOREIGN KEY (idFaccio) REFERENCES Faccio(id)
-            );
-            """;
+                CREATE TABLE IF NOT EXISTS Personatge (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    nom VARCHAR(15),
+                    atac REAL,
+                    defensa REAL,
+                    idFaccio INTEGER,
+                    FOREIGN KEY (idFaccio) REFERENCES Faccio(id)
+                );
+                """;
 
         try (Connection conn = DatabaseConnection.getConnection();
-             Statement stmt = conn.createStatement()) {
+                Statement stmt = conn.createStatement()) {
 
             // Crear tablas
             stmt.execute(createFaccio);
@@ -45,8 +45,68 @@ public class DatabaseInitializer {
     }
 
     private static void insertInitialData(Statement stmt) throws SQLException {
-        // Aquí insertas las sentencias SQL de los anexos
-        stmt.executeUpdate("INSERT INTO Faccio (nom, resum) VALUES ('Demacia', 'Regne orgullós...')");
-        // ... el resto de INSERTs
+
+        stmt.executeUpdate("""
+                    INSERT INTO Faccio (nom, resum)
+                    VALUES ('Demacia',
+                    'Regne orgullós amb una gran tradició militar');
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Faccio (nom, resum)
+                    VALUES ('Noxus',
+                    'Imperi poderós i expansionista');
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Faccio (nom, resum)
+                    VALUES ('Ionia',
+                    'Arxipèlag on la màgia i la natura conviuen');
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Galio',1,3,1);
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Lux',2,2,1);
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Garen',2,3,1);
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Darius',3,3,2);
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Katarina',2,1,2);
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Swain',1,2,2);
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Yasuo',3,2,3);
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Ahri',2,1,3);
+                """);
+
+        stmt.executeUpdate("""
+                    INSERT INTO Personatge (nom, atac, defensa, idFaccio)
+                    VALUES ('Irelia',3,2,3);
+                """);
     }
 }

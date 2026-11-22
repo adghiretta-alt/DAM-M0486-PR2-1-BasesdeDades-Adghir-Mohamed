@@ -24,7 +24,7 @@
         <maven.compiler.release>21</maven.compiler.release>
 
         <!-- Classe que executa 'mvn exec:java' si no se n'indica cap altra amb -Dexec.mainClass=... -->
-        <exec.mainClass>cat.iesesteveterradas.Main</exec.mainClass>
+        <exec.mainClass>cat.iesesteveterradas.PR210LOL</exec.mainClass>
 
         <!-- Versions de les dependències -->
         <sqlite.version>3.53.4.0</sqlite.version>
